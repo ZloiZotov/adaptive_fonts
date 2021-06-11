@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Calibry, sans-serif;
+}
+
+html {
+   
+    /* height: 100%; */
+    background-color: rgb(43, 43, 43);
+    color: blanchedalmond;
+    /* line-height: 24px; */
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+
+}
+
+.head {
+    background-color: black;
+    width: 100%;
+    text-align: left;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.text-block {
+    padding-top: 10px;
+}
+
+.text {
+    margin: 15px 0;
+}
+
+
+$maxWidth: 1280; //max-width template
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $addMobSize: $addSize + $addSize * 0.7;
+    @media (max-width: 767px) {
+        font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+    }
+    @media (max-width: 767px) {
+        font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
+    }
+}
+
+
+h1 {
+    font-size: 40px;
+    font-weight: 900;
+    @include adaptiv-font(40, 24); // use mixin adaptiv-font(font-size for PC, font-size for mobile)
+}
+
+
+h2 {    
+    padding: 0 0 10px 0;
+    font-size: 30px;   
+    @include adaptiv-font(30, 18); // use mixin adaptiv-font(font-size for PC, font-size for mobile)
+}
+
+p {
+    margin: 10px 0;
+    font-size: 18px;
+    @include adaptiv-font(18, 14); // use mixin adaptiv-font(font-size for PC, font-size for mobile)
+}
